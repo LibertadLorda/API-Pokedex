@@ -23,7 +23,6 @@ axios.get(APIURL)
     .then((response) => {
       if(response.status === 200){
         const pokemonList = response.data.results;
-        console.log(pokemonList);
 
         for (let i = 0; i < pokemonList.length; i++) {
         const pokemonUrl = pokemonList[i].url;
@@ -60,7 +59,6 @@ axios.get(APIURL)
     .catch(error => {
     console.log("Error: No se pueden obtener los datos", error);
   });
-
     }
   }
 })
