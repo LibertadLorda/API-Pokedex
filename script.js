@@ -43,17 +43,21 @@ axios.get(APIURL)
               pokeType = pokeType.slice(0, -2); 
               // Obtener el color según el primer tipo
               const cardColor = colors[pokemonData.types[0].type.name.toLowerCase()]; 
+              //Transformar la primera letra del nombre en mayúsculas
+              const namePoke = pokemonData.name;
+              const namePokeMod = namePoke.charAt(0).toUpperCase() + namePoke.slice(1);
+
 
             poke_container.innerHTML += 
-            '<div class="pokemon" style="background-color:' + cardColor + '">' +
-              '<div class=img-container>'+
-                '<img src="'+ pokemonData.sprites.front_default+ '">'+
-              '</div>'+
-              '<div class="info">'+ pokemonData.id +
-                '<h3 class="name">'+ pokemonData.name + '</h3>'+
-                '<small class="type">' + "Type: " + pokeType +
-                '<span></span></small></div>' +
-              "</div>";
+              '<div class="pokemon" style="background-color:' + cardColor + '">' +
+                '<div class=img-container>'+
+                  '<img src="'+ pokemonData.sprites.front_default+ '">' +
+                '</div>'+
+                '<div class="info"><span class="number">'+ pokemonData.id + '</span>'+ 
+                  '<h3 class="name">'+ namePokeMod + '</h3>'+
+                  '<small class="type">' + "Type: " +
+                  '<span>' + pokeType + '</span></small></div>' +
+                "</div>";
         })
 
     .catch(error => {
